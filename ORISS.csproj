@@ -16,7 +16,47 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="HTML Server\" />
+      <Folder Include="HomeWork_5\" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="HomeWork_2\settings.json"
+              CopyToOutputDirectory="PreserveNewest" />
+
+        <None Update="HomeWork_2\Knowledge.html"
+              CopyToOutputDirectory="PreserveNewest" />
+
+        <None Update="HomeWork_4\static\Rockstar\rockstar.html">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+
+        <None Update="HomeWork_4\static\HtmlKnowledge\Knowledge.html">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+
+        <None Update="HomeWork_4\static\HtmlKnowledge\style.css">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+
+        <None Update="HomeWork_4\static\SearchEnginer\time.html">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="HomeWork_3\settings.json"
+              CopyToOutputDirectory="PreserveNewest" />
+
+        <None Update="HomeWork_3\static\**\*"
+              CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <None Update="HomeWork_4\settings.json"
+              CopyToOutputDirectory="PreserveNewest" />
+
+        <None Update="HomeWork_4\static\**\*"
+              CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 
 </Project>

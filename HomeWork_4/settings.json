@@ -1,0 +1,5 @@
+{
+  "Port": 8891,
+  "Path": "connection",
+  "PublicDirectoryPath": "static"
+}
