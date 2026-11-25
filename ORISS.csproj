@@ -13,27 +13,20 @@
       <Content Include="Control_work\.idea\projectSettingsUpdater.xml" />
       <Content Include="Control_work\.idea\vcs.xml" />
       <Content Include="Control_work\.idea\workspace.xml" />
+      <Content Include="HomeWork_8\settings.json" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="HomeWork_5\" />
+      <Folder Include="HomeWork_4\static\Image\" />
+      <Folder Include="HomeWork_7\" />
+      <Folder Include="Packages\" />
     </ItemGroup>
     <ItemGroup>
-        <None Update="HomeWork_2\settings.json"
-              CopyToOutputDirectory="PreserveNewest" />
+        <None Update="HomeWork_2\settings.json" CopyToOutputDirectory="PreserveNewest" />
 
-        <None Update="HomeWork_2\Knowledge.html"
-              CopyToOutputDirectory="PreserveNewest" />
+        <None Update="HomeWork_2\Knowledge.html" CopyToOutputDirectory="PreserveNewest" />
 
         <None Update="HomeWork_4\static\Rockstar\rockstar.html">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-
-        <None Update="HomeWork_4\static\HtmlKnowledge\Knowledge.html">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-
-        <None Update="HomeWork_4\static\HtmlKnowledge\style.css">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
 
@@ -43,20 +36,49 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="HomeWork_3\settings.json"
-              CopyToOutputDirectory="PreserveNewest" />
+        <None Update="HomeWork_3\settings.json" CopyToOutputDirectory="PreserveNewest" />
 
-        <None Update="HomeWork_3\static\**\*"
-              CopyToOutputDirectory="PreserveNewest" />
+        <None Update="HomeWork_3\static\**\*" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 
 
     <ItemGroup>
-        <None Update="HomeWork_4\settings.json"
-              CopyToOutputDirectory="PreserveNewest" />
+        <None Update="HomeWork_4\settings.json" CopyToOutputDirectory="PreserveNewest" />
 
-        <None Update="HomeWork_4\static\**\*"
-              CopyToOutputDirectory="PreserveNewest" />
+        <None Update="HomeWork_4\static\**\*" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="HomeWork_5\settings.json" CopyToOutputDirectory="PreserveNewest" />
+
+        <None Update="HomeWork_5\static\**\*" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="**/obj/**/*.cs" />
+        <Compile Remove="**/bin/**/*.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\MiniHttpServer.Framework\MiniHttpServer.Framework.csproj" />
+      <ProjectReference Include="..\MiniHttpServer.ORM\MiniHttpServer.ORM.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <None Update="HomeWork_6\settings.json" CopyToOutputDirectory="PreserveNewest" />
+
+        <None Update="HomeWork_6\static\**\*" CopyToOutputDirectory="PreserveNewest" />
+
+        <None Update="HomeWork_6\Templates\**\*" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="HomeWork_8\**\*.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+
+        <None Update="HomeWork_8\**\*.html">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Npgsql" Version="9.0.5" />
+    </ItemGroup>
 </Project>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #eee;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .user {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Список пользователей</h1>
+
+    $foreach(var user in Users)
+
+    <div class="user">
+        <h2>${user.Name}</h2>
+
+        $if(user.IsActive)
+        <p>Активен</p>
+        $else
+        <p>Неактивен</p>
+        $endif
+    </div>
+
+    $endfor
+
+    <a href="/user/profile">Вернуться к профилю</a>
+
+</div>
+
+</body>
+</html>

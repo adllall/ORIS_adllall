@@ -21,6 +21,6 @@ public sealed class ConfigurationManager
         string json = File.ReadAllText(path);
 
         Settings = JsonSerializer.Deserialize<ServerSettings>(json)
-                   ?? throw new Exception("Не удалось загрузить настройки");
+                   ?? throw new Exception("Ошибка загрузки настроек");
     }
 }

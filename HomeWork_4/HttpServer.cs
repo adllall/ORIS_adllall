@@ -1,14 +1,15 @@
-
 using System.Net;
 using ORISS.HomeWork_4.Framework.Configuration;
-using ORISS.HomeWork_4.Framework.Handlers;
+using ORISS.HomeWork_4.Framework.Handler;
 
-namespace ORISS.HomeWork_4.Framework;
+namespace ORISS.HomeWork_4;
 
 public class HttpServer
 {
-    private readonly HttpListener listener = new HttpListener();
+    private readonly HttpListener listener = new();
+
     private readonly ServerSettings settings;
+
     private readonly RequestHandler handler;
 
     public HttpServer(
@@ -22,7 +23,7 @@ public class HttpServer
     public void Start()
     {
         string address =
-            $"http://127.0.0.1:{settings.Port}/{settings.Path.Trim('/')}/";
+            $"http://127.0.0.1:{settings.Port}/{settings.Path}/";
 
         listener.Prefixes.Add(address);
         listener.Start();
@@ -30,10 +31,10 @@ public class HttpServer
         Console.WriteLine("Сервер запущен: " + address);
         Console.WriteLine("Для остановки введите stop");
 
-        _ = Listen();
+        _ = ListenAsync();
     }
 
-    private async Task Listen()
+    private async Task ListenAsync()
     {
         while (listener.IsListening)
         {
@@ -45,11 +46,7 @@ public class HttpServer
             }
             catch (HttpListenerException)
             {
-                if (!listener.IsListening)
-                    break;
-
-                Console.WriteLine("Ошибка получения запроса");
-                continue;
+                break;
             }
             catch (ObjectDisposedException)
             {
@@ -62,7 +59,7 @@ public class HttpServer
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ошибка обработки: " + ex.Message);
+                Console.WriteLine("Ошибка: " + ex.Message);
 
                 try
                 {
@@ -74,13 +71,7 @@ public class HttpServer
             }
             finally
             {
-                try
-                {
-                    context.Response.Close();
-                }
-                catch
-                {
-                }
+                context.Response.Close();
             }
         }
     }

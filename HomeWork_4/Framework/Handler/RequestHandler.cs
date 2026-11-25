@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace ORISS.HomeWork_4.Framework.Handlers;
+namespace ORISS.HomeWork_4.Framework.Handler;
 
 public abstract class RequestHandler
 {
@@ -11,11 +11,13 @@ public abstract class RequestHandler
         Next = next;
     }
 
-    protected async Task HandleNextAsync(HttpListenerContext context)
+    protected async Task HandleNextAsync(
+        HttpListenerContext context)
     {
         if (Next != null)
             await Next.HandleAsync(context);
     }
 
-    public abstract Task HandleAsync(HttpListenerContext context);
+    public abstract Task HandleAsync(
+        HttpListenerContext context);
 }

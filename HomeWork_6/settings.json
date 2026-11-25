@@ -1,0 +1,10 @@
+{
+  "Port": 8893,
+  "Path": "",
+  "PublicDirectoryPath": "static",
+  "SmtpHost": "127.0.0.1",
+  "SmtpPort": 1025,
+  "SmtpSsl": false,
+  "EmailFrom": "student@example.com",
+  "EmailTo": "teacher@example.com"
+}

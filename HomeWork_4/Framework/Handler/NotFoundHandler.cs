@@ -1,22 +1,26 @@
 using System.Net;
 using System.Text;
 
-namespace ORISS.HomeWork_4.Framework.Handlers;
+namespace ORISS.HomeWork_4.Framework.Handler;
 
 public class NotFoundHandler : RequestHandler
 {
-    public override async Task HandleAsync(HttpListenerContext context)
+    public override async Task HandleAsync(
+        HttpListenerContext context)
     {
-        HttpListenerResponse response = context.Response;
+        byte[] data = Encoding.UTF8.GetBytes(
+            "404 Not Found");
 
-        byte[] data = Encoding.UTF8.GetBytes("404 Not Found");
+        context.Response.StatusCode = 404;
 
-        response.StatusCode = 404;
-        response.ContentType = "text/plain; charset=utf-8";
-        response.ContentLength64 = data.Length;
+        context.Response.ContentType =
+            "text/plain; charset=utf-8";
 
-        await response.OutputStream.WriteAsync(data);
+        context.Response.ContentLength64 = data.Length;
 
-        Console.WriteLine("404 Not Found: " + context.Request.Url);
+        await context.Response.OutputStream.WriteAsync(data);
+
+        Console.WriteLine(
+            "404 Not Found: " + context.Request.Url);
     }
 }

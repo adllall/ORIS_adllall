@@ -1,43 +1,34 @@
-using ORISS.HomeWork_4.Framework;
 using ORISS.HomeWork_4.Framework.Configuration;
-using ORISS.HomeWork_4.Framework.Handlers;
+using ORISS.HomeWork_4.Framework.Handler;
 
 namespace ORISS.HomeWork_4;
 
 public class HomeWork4
 {
-    public static async Task Main()
+    public static void Run()
     {
         try
         {
-            ServerSettings settings =
-                ConfigurationManager.Instance.Settings;
+            var settings = ConfigurationManager.Instance.Settings;
 
-            LoginHandler loginHandler = new LoginHandler();
-
-            StaticFilesHandler staticHandler =
-                new StaticFilesHandler(settings);
-
-            NotFoundHandler notFoundHandler =
-                new NotFoundHandler();
+            var loginHandler = new LoginHandler();
+            var staticHandler = new StaticFilesHandler(settings);
+            var notFoundHandler = new NotFoundHandler();
 
             loginHandler.SetNext(staticHandler);
             staticHandler.SetNext(notFoundHandler);
 
-            HttpServer server = new HttpServer(settings, loginHandler);
+            var server = new HttpServer(settings, loginHandler);
 
             server.Start();
 
-            while (true)
+            while (Console.ReadLine() is string command)
             {
-                string? command = Console.ReadLine();
-
-                if (command == "stop" || command == null)
-                {
-                    server.Stop();
+                if (command == "stop")
                     break;
-                }
             }
+
+            server.Stop();
         }
         catch (Exception ex)
         {

@@ -1,0 +1,10 @@
+{
+  "Port": 8892,
+  "Path": "",
+  "PublicDirectoryPath": "static",
+  "SmtpHost": "smtp.yandex.ru",
+  "SmtpPort": 587,
+  "SmtpSsl": true,
+  "EmailFrom": "adelinamamelnikova@yandex.ru",
+  "EmailTo": "adelinamamelnikova@yandex.ru"
+}

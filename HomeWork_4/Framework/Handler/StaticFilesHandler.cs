@@ -1,9 +1,8 @@
-
 using System.Net;
 using ORISS.HomeWork_4.Framework.Configuration;
 using ORISS.HomeWork_4.Framework.Content;
 
-namespace ORISS.HomeWork_4.Framework.Handlers;
+namespace ORISS.HomeWork_4.Framework.Handler;
 
 public class StaticFilesHandler : RequestHandler
 {
@@ -20,33 +19,27 @@ public class StaticFilesHandler : RequestHandler
         basePath = "/" + settings.Path.Trim('/') + "/";
     }
 
-    public override async Task HandleAsync(HttpListenerContext context)
+    public override async Task HandleAsync(
+        HttpListenerContext context)
     {
-        string urlPath = context.Request.Url!.AbsolutePath;
+        string url = context.Request.Url?.AbsolutePath ?? "";
 
-        if (!urlPath.StartsWith(
-                basePath,
-                StringComparison.OrdinalIgnoreCase))
+        if (context.Request.HttpMethod != "GET" ||
+            !url.StartsWith(basePath))
         {
             await HandleNextAsync(context);
             return;
         }
 
         string relativePath = Uri.UnescapeDataString(
-            urlPath.Substring(basePath.Length));
+            url.Substring(basePath.Length));
 
-        relativePath = relativePath.Replace('\\', '/');
-
-        if (relativePath == "HtmlKnowledge/")
-            relativePath += "Knowledge.html";
-        else if (relativePath == "Rockstar/")
-            relativePath += "rockstar.html";
-        else if (relativePath == "SearchEnginer/")
-            relativePath += "time.html";
-        else if (relativePath == "")
-            relativePath = "HtmlKnowledge/Knowledge.html";
-        else if (relativePath.EndsWith("/"))
-            relativePath += "index.html";
+        if (relativePath == "" ||
+            relativePath == "Rockstar" ||
+            relativePath == "Rockstar/")
+        {
+            relativePath = "Rockstar/rockstar.html";
+        }
 
         string filePath = Path.GetFullPath(
             Path.Combine(staticFolder, relativePath));
@@ -57,29 +50,24 @@ public class StaticFilesHandler : RequestHandler
 
         if (!filePath.StartsWith(
                 folderPrefix,
-                StringComparison.OrdinalIgnoreCase))
+                StringComparison.OrdinalIgnoreCase)
+            || !File.Exists(filePath))
         {
             await HandleNextAsync(context);
             return;
         }
 
-        if (!File.Exists(filePath))
-        {
-            await HandleNextAsync(context);
-            return;
-        }
+        context.Response.StatusCode = 200;
 
-        HttpListenerResponse response = context.Response;
-
-        response.StatusCode = 200;
-        response.ContentType = MimeTypeProvider.GetMimeType(filePath);
-        response.Headers["Server"] = "MiniHttpServer/1.0";
+        context.Response.ContentType =
+            MimeTypeProvider.GetMimeType(filePath);
 
         using FileStream file = File.OpenRead(filePath);
 
-        response.ContentLength64 = file.Length;
+        context.Response.ContentLength64 = file.Length;
 
-        await file.CopyToAsync(response.OutputStream);
+        await file.CopyToAsync(
+            context.Response.OutputStream);
 
         Console.WriteLine("200 OK: " + relativePath);
     }

@@ -1,0 +1,6 @@
+{
+  "Port": 8894,
+  "Path": "connection",
+  "PublicDirectoryPath": "static",
+  "ConnectionString": "Host=localhost;Port=5432;Database=orisdb;Username=postgres;"
+}

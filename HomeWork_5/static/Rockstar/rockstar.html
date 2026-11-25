@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Rockstar — Educational Demo</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #101010;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 70px 20px 25px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            width: 550px;
+            max-width: 100%;
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            margin: 0 0 25px;
+        }
+
+        .notice {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .field {
+            width: 100%;
+            height: 60px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 17px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .button {
+            background: #ffb51b;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #efa400;
+        }
+
+        .social {
+            width: 550px;
+            max-width: 100%;
+            background: white;
+            color: #333;
+            padding: 25px 30px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 60px;
+            color: #999;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <img class="logo"
+         src="/Image/logo.png"
+         alt="Rockstar">
+
+    <div class="card">
+
+        <h1>Send a message</h1>
+
+        <p class="notice">
+            Educational demonstration.
+            Do not enter real account credentials.
+        </p>
+
+        <form action="/auth/sendemail" method="post">
+
+            <input class="field"
+                   type="text"
+                   name="demoUser"
+                   placeholder="Demo user"
+                   maxlength="100"
+                   required>
+
+            <input class="field"
+                   type="text"
+                   name="message"
+                   placeholder="Message"
+                   maxlength="1000"
+                   required>
+
+            <div class="actions">
+
+                <button class="button" type="submit">
+                    Send Email
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="social">
+
+        <span>Platforms</span>
+
+        <div class="icons">
+
+            <img class="icon"
+                 src="/Image/playstation.png"
+                 alt="PlayStation">
+
+            <img class="icon"
+                 src="/Image/xbox.png"
+                 alt="Xbox">
+
+        </div>
+
+    </div>
+
+    <footer>
+        EDUCATIONAL DEMONSTRATION
+    </footer>
+
+</div>
+
+</body>
+</html>

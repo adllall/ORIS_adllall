@@ -4,7 +4,7 @@ public class ServerSettings
 {
     public int Port { get; set; }
 
-    public string Path { get; set; } = string.Empty;
+    public string Path { get; set; } = "";
 
-    public string PublicDirectoryPath { get; set; } = string.Empty;
+    public string PublicDirectoryPath { get; set; } = "";
 }
